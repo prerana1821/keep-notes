@@ -17,8 +17,21 @@ function NoteInput({ onAddNote }) {
   const [tag, setTag] = useState('');
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Available colors for notes
-  const colors = ['#ffffff', '#ffcccb', '#ffffcc', '#ccffcc', '#ccccff', '#ffccff'];
+  // Available colors for notes (Google Keep palette)
+  const colors = [
+    '#ffffff', // White
+    '#f28b82', // Red
+    '#fbbc04', // Yellow
+    '#fff475', // Light Yellow
+    '#ccff90', // Green
+    '#a7ffeb', // Teal
+    '#cbf0f8', // Light Blue
+    '#aecbfa', // Blue
+    '#d7aefb', // Purple
+    '#fdcfe8', // Pink
+    '#e6c9a8', // Brown
+    '#e8eaed'  // Gray
+  ];
 
   // Handle form submission
   const handleSubmit = (e) => {

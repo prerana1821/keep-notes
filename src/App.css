@@ -6,116 +6,127 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Roboto', 'Arial', sans-serif;
+  background: #ffffff;
   min-height: 100vh;
 }
 
 .App {
   min-height: 100vh;
-  padding-bottom: 2rem;
+  background: #ffffff;
 }
 
-/* ===== HEADER ===== */
+/* ===== HEADER (Google Keep style) ===== */
 .app-header {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem 0;
-  margin-bottom: 2rem;
-  text-align: center;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.1);
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .header-content {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
 
 .app-title {
-  font-size: 2.5rem;
-  color: #667eea;
-  margin-bottom: 0.5rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  color: #5f6368;
+  margin-bottom: 0;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .app-subtitle {
-  color: #666;
-  font-size: 1rem;
-  font-weight: 300;
+  display: none;
 }
 
 /* ===== CONTAINER LAYOUT ===== */
 .app-container {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
-  gap: 2rem;
-  padding: 0 1rem;
+  gap: 0;
+  padding: 0;
 }
 
-/* ===== SIDEBAR ===== */
+/* ===== SIDEBAR (Google Keep style) ===== */
 .sidebar {
-  flex: 0 0 250px;
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex: 0 0 280px;
+  background: transparent;
+  padding: 0 1rem;
   height: fit-content;
   position: sticky;
-  top: 2rem;
+  top: 80px;
 }
 
 .tag-filter-title {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 1rem;
-  font-weight: 600;
+  font-size: 0.875rem;
+  color: #5f6368;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0 0.5rem;
 }
 
 .tag-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0;
 }
 
 .tag-button {
-  background: #f5f5f5;
-  border: 2px solid transparent;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
+  background: transparent;
+  border: none;
+  border-radius: 0 25px 25px 0;
+  padding: 0.75rem 1.5rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease;
   text-align: left;
-  font-size: 0.95rem;
-  color: #333;
+  font-size: 0.875rem;
+  color: #202124;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .tag-button:hover {
-  background: #e8e8e8;
-  transform: translateX(4px);
+  background: #f1f3f4;
 }
 
 .tag-button.active {
-  background: #667eea;
-  color: white;
-  border-color: #667eea;
+  background: #feefc3;
+  color: #202124;
 }
 
 .no-tags-message {
-  color: #999;
-  font-size: 0.9rem;
+  color: #5f6368;
+  font-size: 0.813rem;
   font-style: italic;
   text-align: center;
   margin-top: 1rem;
+  padding: 0 0.5rem;
 }
 
 /* ===== MAIN CONTENT ===== */
 .main-content {
   flex: 1;
+  padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* ===== NOTE INPUT ===== */
+/* ===== NOTE INPUT (Google Keep style) ===== */
 .note-input-container {
   margin-bottom: 2rem;
 }
@@ -126,17 +137,17 @@ body {
 }
 
 .note-input-collapsed {
-  background: white;
+  background: #fff;
+  border: 1px solid #d9d9d9;
   border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0.875rem 1rem;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.1), 0 2px 6px 2px rgba(60, 64, 67, 0.05);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.2s ease;
 }
 
 .note-input-collapsed:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.15), 0 4px 8px 3px rgba(60, 64, 67, 0.1);
 }
 
 .note-input-placeholder {
@@ -146,187 +157,228 @@ body {
   font-size: 1rem;
   cursor: pointer;
   background: transparent;
-  color: #666;
+  color: #5f6368;
+  font-family: 'Roboto', 'Arial', sans-serif;
 }
 
 .note-input-expanded {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.3s ease;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.1), 0 2px 6px 2px rgba(60, 64, 67, 0.05);
+  transition: background-color 0.2s ease;
 }
 
 .note-input-title {
   width: 100%;
   border: none;
   outline: none;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
   margin-bottom: 0.5rem;
-  border-radius: 6px;
-  background: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+  background: transparent;
+  color: #202124;
+  font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+.note-input-title::placeholder {
+  color: #5f6368;
 }
 
 .note-input-text {
   width: 100%;
   border: none;
   outline: none;
-  font-size: 1rem;
-  padding: 0.75rem;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
   margin-bottom: 0.5rem;
   resize: vertical;
-  font-family: inherit;
-  border-radius: 6px;
-  background: rgba(0, 0, 0, 0.02);
+  font-family: 'Roboto', 'Arial', sans-serif;
+  background: transparent;
+  color: #202124;
+  line-height: 1.5;
+}
+
+.note-input-text::placeholder {
+  color: #5f6368;
 }
 
 .note-input-tag {
   width: 100%;
   border: none;
   outline: none;
-  font-size: 0.95rem;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border-radius: 6px;
-  background: rgba(0, 0, 0, 0.02);
+  font-size: 0.813rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  background: transparent;
+  color: #202124;
+  font-family: 'Roboto', 'Arial', sans-serif;
 }
 
-/* ===== COLOR PICKER ===== */
+.note-input-tag::placeholder {
+  color: #5f6368;
+}
+
+/* ===== COLOR PICKER (Google Keep colors) ===== */
 .note-input-colors {
   display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0.25rem;
+  justify-content: flex-start;
 }
 
 .color-option {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   cursor: pointer;
-  border: 3px solid transparent;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  transition: all 0.15s ease;
+  position: relative;
 }
 
 .color-option:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-color: #202124;
+  opacity: 0.87;
 }
 
 .color-option.selected {
-  border-color: #667eea;
-  transform: scale(1.15);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  border-color: #202124;
 }
 
-/* ===== BUTTONS ===== */
+.color-option.selected::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #202124;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* ===== BUTTONS (Google Keep style) ===== */
 .note-input-actions {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.5rem;
   justify-content: flex-end;
+  padding-top: 0.5rem;
 }
 
 .btn-primary {
-  background: #667eea;
-  color: white;
+  background: transparent;
+  color: #202124;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  font-family: 'Roboto', 'Arial', sans-serif;
 }
 
 .btn-primary:hover {
-  background: #5568d3;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  background: rgba(95, 99, 104, 0.1);
 }
 
 .btn-secondary {
-  background: #f5f5f5;
-  color: #666;
+  background: transparent;
+  color: #5f6368;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  font-family: 'Roboto', 'Arial', sans-serif;
 }
 
 .btn-secondary:hover {
-  background: #e8e8e8;
+  background: rgba(95, 99, 104, 0.08);
 }
 
 .btn-small {
-  background: rgba(0, 0, 0, 0.05);
+  background: transparent;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
+  font-size: 0.813rem;
+  transition: background-color 0.15s ease;
   font-weight: 500;
+  color: #202124;
+  font-family: 'Roboto', 'Arial', sans-serif;
 }
 
 .btn-small:hover {
-  background: rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
+  background: rgba(95, 99, 104, 0.1);
 }
 
 .btn-delete {
-  color: #e74c3c;
+  color: #202124;
 }
 
 .btn-delete:hover {
-  background: #ffe6e6;
+  background: rgba(95, 99, 104, 0.1);
 }
 
 .btn-icon {
-  background: none;
+  background: transparent;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   cursor: pointer;
-  transition: transform 0.2s ease;
-  padding: 0.25rem;
+  transition: background-color 0.15s ease;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.71;
 }
 
 .btn-icon:hover {
-  transform: scale(1.2);
+  background: rgba(95, 99, 104, 0.1);
+  opacity: 0.87;
 }
 
 /* ===== FILTER INFO ===== */
 .filter-info {
-  background: white;
-  padding: 1rem;
+  background: #e8f0fe;
+  padding: 0.75rem 1rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
   gap: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #d2e3fc;
+  font-size: 0.875rem;
+  color: #202124;
 }
 
 .clear-filter {
-  background: #667eea;
-  color: white;
+  background: transparent;
+  color: #1967d2;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  padding: 0.375rem 0.75rem;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.813rem;
   margin-left: auto;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
 }
 
 .clear-filter:hover {
-  background: #5568d3;
+  background: rgba(25, 103, 210, 0.08);
 }
 
 /* ===== NOTES SECTIONS ===== */
@@ -335,89 +387,119 @@ body {
 }
 
 .section-title {
-  font-size: 1.3rem;
-  color: white;
-  margin-bottom: 1rem;
-  font-weight: 600;
+  font-size: 0.688rem;
+  color: #5f6368;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
+  padding-left: 0.5rem;
 }
 
+/* ===== MASONRY LAYOUT (Google Keep style) ===== */
 .notes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  column-count: 4;
+  column-gap: 1rem;
 }
 
-/* ===== NOTE CARD ===== */
+@media (max-width: 1280px) {
+  .notes-grid {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 968px) {
+  .notes-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .notes-grid {
+    column-count: 1;
+  }
+}
+
+/* ===== NOTE CARD (Google Keep style) ===== */
 .note-card {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  break-inside: avoid;
+  transition: all 0.15s ease;
+  display: inline-block;
+  width: 100%;
 }
 
 .note-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.15), 0 2px 6px 2px rgba(60, 64, 67, 0.1);
+}
+
+.note-card:hover .note-card-actions {
+  opacity: 1;
 }
 
 .note-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .note-card-title {
-  font-size: 1.3rem;
-  color: #333;
-  font-weight: 700;
+  font-size: 1rem;
+  color: #202124;
+  font-weight: 500;
   flex: 1;
   word-break: break-word;
+  line-height: 1.5;
 }
 
 .pin-btn {
   flex-shrink: 0;
-  opacity: 0.6;
+  opacity: 0.54;
+}
+
+.note-card:hover .pin-btn {
+  opacity: 0.71;
 }
 
 .pin-btn:hover {
-  opacity: 1;
+  opacity: 0.87;
 }
 
 .note-card-text {
-  color: #555;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  flex: 1;
+  color: #202124;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
   white-space: pre-wrap;
   word-break: break-word;
 }
 
 .note-card-tag {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .tag {
-  background: rgba(102, 126, 234, 0.1);
-  color: #667eea;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  background: rgba(0, 0, 0, 0.05);
+  color: #5f6368;
+  padding: 0.25rem 0.625rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
   display: inline-block;
 }
 
 .note-card-actions {
   display: flex;
-  gap: 0.5rem;
-  margin-top: auto;
+  gap: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
 }
 
 /* ===== EDIT MODE ===== */
@@ -425,53 +507,58 @@ body {
 .note-edit-text,
 .note-edit-tag {
   width: 100%;
-  border: 2px solid #e0e0e0;
+  border: 1px solid #e0e0e0;
   outline: none;
-  padding: 0.75rem;
-  margin-bottom: 0.75rem;
-  border-radius: 8px;
-  font-family: inherit;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  font-family: 'Roboto', 'Arial', sans-serif;
   transition: border-color 0.2s ease;
+  background: #fff;
 }
 
 .note-edit-title {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #202124;
 }
 
 .note-edit-text {
-  font-size: 1rem;
+  font-size: 0.875rem;
   resize: vertical;
-  min-height: 100px;
+  min-height: 80px;
+  color: #202124;
+  line-height: 1.5;
 }
 
 .note-edit-tag {
-  font-size: 0.95rem;
+  font-size: 0.813rem;
+  color: #202124;
 }
 
 .note-edit-title:focus,
 .note-edit-text:focus,
 .note-edit-tag:focus {
-  border-color: #667eea;
+  border-color: #1967d2;
 }
 
 /* ===== EMPTY STATE ===== */
 .empty-state {
   text-align: center;
   padding: 4rem 2rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: transparent;
 }
 
 .empty-state-icon {
-  font-size: 4rem;
+  font-size: 6rem;
   margin-bottom: 1rem;
+  opacity: 0.4;
 }
 
 .empty-state-text {
-  font-size: 1.2rem;
-  color: #666;
+  font-size: 1rem;
+  color: #5f6368;
+  font-weight: 400;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -483,23 +570,38 @@ body {
   .sidebar {
     position: static;
     flex: 1;
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 1rem;
+  }
+
+  .tag-button {
+    border-radius: 25px;
+  }
+
+  .main-content {
+    padding: 0 1rem;
   }
 
   .notes-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    column-count: 2;
   }
 }
 
 @media (max-width: 640px) {
   .app-title {
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
 
   .notes-grid {
-    grid-template-columns: 1fr;
+    column-count: 1;
   }
 
-  .note-input-colors {
-    flex-wrap: wrap;
+  .main-content {
+    padding: 0 0.5rem;
+  }
+
+  .sidebar {
+    padding: 0.5rem;
   }
 }
