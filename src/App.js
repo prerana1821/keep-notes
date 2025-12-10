@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
 import NoteInput from './components/NoteInput';
-import NoteCard from './components/NoteCard';
-import TagFilter from './components/TagFilter';
+import FilterInfo from './components/FilterInfo';
+import NotesSection from './components/NotesSection';
+import EmptyState from './components/EmptyState';
 
 /**
  * Main App Component - Google Keep Clone
@@ -67,97 +70,44 @@ function App() {
 
   return (
     <div className="App">
-      {/* Header */}
-      <header className="app-header">
-        <div className="header-content">
-          <h1 className="app-title">
-            <span style={{ color: '#fbbc04' }}>K</span>
-            <span style={{ color: '#ea4335' }}>e</span>
-            <span style={{ color: '#4285f4' }}>e</span>
-            <span style={{ color: '#34a853' }}>p</span>
-            {' '}Notes
-          </h1>
-          <p className="app-subtitle">Simple. Beautiful. Organized.</p>
-        </div>
-      </header>
+      <Header />
 
-      {/* Main content */}
       <div className="app-container">
-        {/* Sidebar with tag filter */}
-        <aside className="sidebar">
-          <TagFilter
-            notes={notes}
-            selectedTag={selectedTag}
-            onSelectTag={setSelectedTag}
-          />
-        </aside>
+        <Sidebar
+          notes={notes}
+          selectedTag={selectedTag}
+          onSelectTag={setSelectedTag}
+        />
 
-        {/* Main content area */}
         <main className="main-content">
-          {/* Note input component */}
           <NoteInput onAddNote={handleAddNote} />
 
-          {/* Display notes count */}
-          {selectedTag && (
-            <div className="filter-info">
-              Showing notes tagged with <strong>#{selectedTag}</strong>
-              <button
-                className="clear-filter"
-                onClick={() => setSelectedTag('')}
-              >
-                Clear filter
-              </button>
-            </div>
-          )}
+          <FilterInfo
+            selectedTag={selectedTag}
+            onClearFilter={() => setSelectedTag('')}
+          />
 
-          {/* Pinned notes section */}
-          {pinnedNotes.length > 0 && (
-            <section className="notes-section">
-              <h2 className="section-title">Pinned</h2>
-              <div className="notes-grid">
-                {pinnedNotes.map((note) => (
-                  <NoteCard
-                    key={note.id}
-                    note={note}
-                    onDelete={handleDeleteNote}
-                    onPin={handlePinNote}
-                    onUpdate={handleUpdateNote}
-                  />
-                ))}
-              </div>
-            </section>
-          )}
+          <NotesSection
+            title="Pinned"
+            notes={pinnedNotes}
+            onDelete={handleDeleteNote}
+            onPin={handlePinNote}
+            onUpdate={handleUpdateNote}
+          />
 
-          {/* Other notes section */}
-          {unpinnedNotes.length > 0 && (
-            <section className="notes-section">
-              <h2 className="section-title">
-                {pinnedNotes.length > 0 ? 'Others' : 'All Notes'}
-              </h2>
-              <div className="notes-grid">
-                {unpinnedNotes.map((note) => (
-                  <NoteCard
-                    key={note.id}
-                    note={note}
-                    onDelete={handleDeleteNote}
-                    onPin={handlePinNote}
-                    onUpdate={handleUpdateNote}
-                  />
-                ))}
-              </div>
-            </section>
-          )}
+          <NotesSection
+            title={pinnedNotes.length > 0 ? 'Others' : 'All Notes'}
+            notes={unpinnedNotes}
+            onDelete={handleDeleteNote}
+            onPin={handlePinNote}
+            onUpdate={handleUpdateNote}
+          />
 
-          {/* Empty state */}
           {filteredNotes.length === 0 && (
-            <div className="empty-state">
-              <p className="empty-state-icon">📝</p>
-              <p className="empty-state-text">
-                {selectedTag
-                  ? `No notes with tag "${selectedTag}"`
-                  : 'No notes yet. Create your first note above!'}
-              </p>
-            </div>
+            <EmptyState
+              hasFilter={!!selectedTag}
+              selectedTag={selectedTag}
+            />
           )}
         </main>
       </div>
